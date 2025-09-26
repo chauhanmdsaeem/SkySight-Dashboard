@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Sky Sight Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <div class="app">
+    <header class="header">
+      <h1>🌤️ SkySight Weather Dashboard</h1>
+      <div class="search-row">
+        <input id="cityInput" type="text" placeholder="Search city… (e.g., Bengaluru)" />
+        <button id="searchBtn">Search</button>
+        <div class="unit-toggle">
+          <label>
+            <input type="checkbox" id="unitSwitch" />
+            <span>°C / °F</span>
+          </label>
+        </div>
+      </div>
+      <p class="hint">Tip: Press Enter to search • Uses Open-Meteo</p>
+    </header>
+
+    <main class="grid">
+      <section class="card current">
+        <div class="current-top">
+          <div>
+            <h2 id="placeName">—</h2>
+            <p id="coords" class="muted">—</p>
+          </div>
+          <div class="temp-wrap">
+            <div id="currentTemp" class="temp">—</div>
+            <div id="currentIcon" class="icon">⌛</div>
+          </div>
+        </div>
+        <div class="current-details">
+          <div><span>Condition</span><strong id="currentDesc">—</strong></div>
+          <div><span>Wind</span><strong id="currentWind">—</strong></div>
+          <div><span>Humidity</span><strong id="currentHumidity">—</strong></div>
+          <div><span>Feels like</span><strong id="currentFeels">—</strong></div>
+          <div><span>Pressure</span><strong id="currentPressure">—</strong></div>
+          <div><span>Updated</span><strong id="updatedAt">—</strong></div>
+        </div>
+      </section>
+
+      <section class="card forecast">
+        <h3>Next 7 Days</h3>
+        <div id="forecastRow" class="forecast-row"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      
+      <a class="muted" href="https://open-meteo.com/" target="_blank" rel="noreferrer">About</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

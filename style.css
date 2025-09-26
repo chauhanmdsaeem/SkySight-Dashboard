@@ -1,0 +1,144 @@
+:root {
+  --bg1: #0f2027;
+  --bg2: #203a43;
+  --bg3: #2c5364;
+  --card: rgba(255, 255, 255, 0.12);
+  --card-strong: rgba(255, 255, 255, 0.2);
+  --text: #f4f7fb;
+  --muted: #d6deea;
+  --accent: #ffd166;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.bg-overlay {
+  position: fixed; inset: 0;
+  background: radial-gradient(1200px 800px at 80% -10%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(1000px 700px at 0% 110%, rgba(255,255,255,0.07), transparent 60%);
+  pointer-events: none;
+}
+
+.app { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+.header { text-align: center; margin-bottom: 20px; }
+.header h1 { margin: 10px 0 16px; font-weight: 800; letter-spacing: 0.3px; }
+.hint { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.search-row {
+  display: flex; gap: 10px; justify-content: center; align-items: center;
+  flex-wrap: wrap;
+}
+#cityInput {
+  width: 320px; max-width: 80vw;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  box-shadow: var(--shadow);
+}
+#cityInput::placeholder { color: #cfe2ffcc; }
+
+#searchBtn {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #222;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+#searchBtn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.unit-toggle {
+  display: inline-flex; align-items: center;
+  gap: 8px; background: var(--card); padding: 10px 12px;
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.unit-toggle input { accent-color: var(--accent); cursor: pointer; }
+
+.grid {
+  display: grid; gap: 18px;
+  grid-template-columns: 1.2fr 1fr;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-strong);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.current-top {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.temp-wrap { display: flex; align-items: center; gap: 16px; }
+.temp { font-size: 3.2rem; font-weight: 800; }
+.icon { font-size: 2rem; }
+
+.current-details {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+}
+.current-details div {
+  background: rgba(255,255,255,0.08);
+  padding: 12px; border-radius: 12px;
+  text-align: center;
+}
+.current-details span { display: block; color: var(--muted); font-size: 0.85rem; }
+.current-details strong { font-size: 1.05rem; }
+
+.muted { color: var(--muted); }
+
+.forecast h3 { margin: 0 0 12px; }
+.forecast-row {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(7, minmax(0,1fr));
+}
+@media (max-width: 900px) {
+  .forecast-row { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .forecast-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+
+.fore-item {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--card-strong);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+}
+.fore-item .day { font-weight: 700; }
+.fore-item .small { color: var(--muted); font-size: 0.9rem; }
+
+.footer {
+  margin-top: 22px;
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Weather-driven background variations */
+body.sunny { --bg1:#2b5876; --bg2:#4e4376; --bg3:#1f3b73; }
+body.clear  { --bg1:#1a2a6c; --bg2:#b21f1f; --bg3:#fdbb2d; }
+body.cloudy { --bg1:#314755; --bg2:#26a0da; --bg3:#517fa4; }
+body.rain   { --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364; }
+body.storm  { --bg1:#232526; --bg2:#414345; --bg3:#0f2027; }
+body.snow   { --bg1:#83a4d4; --bg2:#b6fbff; --bg3:#6dd5ed; }
